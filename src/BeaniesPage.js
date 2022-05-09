@@ -7,7 +7,7 @@ import BeaniesList from './BeaniesList';
 
 export default function BeaniesPage() {
   const [beanieBabies, setBeanieBabies] = useState([]);
-  const [lastPage, setLastPage] = useState(100);
+  // const [lastPage, setLastPage] = useState(100);
   const [page, setPage] = useState(1);
   const perPage = 40;
   
@@ -31,7 +31,9 @@ export default function BeaniesPage() {
         {/* also, disable this button when you are on the first page */}
         <button disabled={page <= 1} onClick={() => setPage(page - 1)}>Previous Page</button>
         {/* on click, this button should increment the page in state  */}
-        <button >Next Page</button>
+        <button 
+          onClick={() => setPage(page + 1)}>Next Page</button>
+        {/* disabled={page >= lastPage} */}
       </div>
       {/* pass the beanie babies into the BeaniesList component */}
       <BeaniesList beanieBabies={beanieBabies} />
