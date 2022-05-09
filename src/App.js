@@ -12,7 +12,7 @@ export default function App() {
     <Router>
       <div className='App'>
         <Switch>
-          <Route exact path="/BeaniesPage">
+          <Route exact path="/">
             <BeaniesPage />
             {/* this home page route should list all the beanies */}
           </Route>

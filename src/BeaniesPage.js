@@ -1,6 +1,6 @@
 //HOME PAGE
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { getBeanieBabies } from './services/fetch-utils';
 import BeaniesList from './BeaniesList';
