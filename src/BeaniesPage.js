@@ -1,9 +1,11 @@
+//HOME PAGE
+
 import { useEffect, useState } from 'react';
 import './App.css';
 import { getBeanieBabies } from './services/fetch-utils';
 import BeaniesList from './BeaniesList';
 
-function App() {
+export default function BeaniesPage() {
   const [beanieBabies, setBeanieBabies] = useState([]);
   const [page, setPage] = useState(1);
   const perPage = 40;
@@ -31,8 +33,8 @@ function App() {
         <button >Next Page</button>
       </div>
       {/* pass the beanie babies into the BeaniesList component */}
+      <BeaniesList beanieBabies={beanieBabies} />
     </>
   );
 }
 
-export default App;
