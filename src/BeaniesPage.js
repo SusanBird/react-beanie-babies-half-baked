@@ -7,6 +7,7 @@ import BeaniesList from './BeaniesList';
 
 export default function BeaniesPage() {
   const [beanieBabies, setBeanieBabies] = useState([]);
+  const [lastPage, setLastPage] = useState(100);
   const [page, setPage] = useState(1);
   const perPage = 40;
   
@@ -20,7 +21,7 @@ export default function BeaniesPage() {
     }
 
     fetch();
-  }, []); // what can you do with this array to trigger a fetch every time the page changes?
+  }, [page]); // what can you do with this array to trigger a fetch every time the page changes?
 
   return (
     <>
@@ -28,7 +29,7 @@ export default function BeaniesPage() {
       <div className='buttons'>
         {/* on click, this button should decrement the page in state  */}
         {/* also, disable this button when you are on the first page */}
-        <button>Previous Page</button>
+        <button disabled={page <= 1} onClick={() => setPage(page - 1)}>Previous Page</button>
         {/* on click, this button should increment the page in state  */}
         <button >Next Page</button>
       </div>
