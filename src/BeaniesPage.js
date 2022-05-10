@@ -1,5 +1,3 @@
-//HOME PAGE
-
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { getBeanieBabies } from './services/fetch-utils';
@@ -7,17 +5,18 @@ import BeaniesList from './BeaniesList';
 
 export default function BeaniesPage() {
   const [beanieBabies, setBeanieBabies] = useState([]);
-  // const [lastPage, setLastPage] = useState(100);
+  const [lastPage, setLastPage] = useState(100);
   const [page, setPage] = useState(1);
-  const perPage = 40;
+  // const perPage = 40;
   
   useEffect(() => {
     async function fetch() {
-      const from = page * perPage - perPage;
-      const to = page * perPage;
-      const beanies = await getBeanieBabies(from, to);
+      // const from = page * perPage - perPage;
+      // const to = page * perPage;
+      const beanies = await getBeanieBabies(page);
 
-      setBeanieBabies(beanies);
+      setBeanieBabies(beanies.body);
+      setLastPage(beanies.lastPage);
     }
 
     fetch();
@@ -25,13 +24,13 @@ export default function BeaniesPage() {
 
   return (
     <>
-      <h2>Current Page {page}</h2>
+      <h2>Page {page}</h2>
       <div className='buttons'>
         {/* on click, this button should decrement the page in state  */}
         {/* also, disable this button when you are on the first page */}
         <button disabled={page <= 1} onClick={() => setPage(page - 1)}>Previous Page</button>
         {/* on click, this button should increment the page in state  */}
-        <button 
+        <button disabled={page >= lastPage} 
           onClick={() => setPage(page + 1)}>Next Page</button>
         {/* disabled={page >= lastPage} */}
       </div>
